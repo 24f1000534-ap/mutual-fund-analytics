@@ -1,0 +1,32 @@
+DAY 1 DATA QUALITY REPORT
+
+Project: Mutual Fund Analytics
+
+Datasets Loaded:
+
+1. fund_master.csv
+2. nav_history.csv
+3. scheme_performance.csv
+4. portfolio_holdings.csv
+5. investor_transactions.csv
+6. aum_by_fund_house.csv
+7. benchmark_indices.csv
+8. category_inflows.csv
+9. industry_folio_count.csv
+10. monthly_sip_inflows.csv
+
+Data Quality Observations:
+
+1. All datasets are stored with .csv extension but are tab-separated files.
+2. Pandas requires sep='\t' for correct loading.
+3. fund_master contains scheme-level metadata.
+4. nav_history contains historical NAV records.
+5. AMFI code serves as the common identifier across datasets.
+6. Total schemes in fund_master: 40
+7. Total schemes in nav_history: 40
+8. Missing AMFI codes: 0
+9. Data integrity between fund_master and nav_history is maintained.
+10. Live NAV data was successfully fetched from MFAPI for six mutual fund schemes.
+
+Conclusion:
+The datasets were successfully ingested and validated. No AMFI code mismatches were found. The data is suitable for further analysis and dashboard development.
