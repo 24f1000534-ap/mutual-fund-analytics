@@ -5,14 +5,28 @@ Master execution script for Mutual Fund Analytics Project
 import subprocess
 
 scripts = [
-    "etl/data_cleaning.py",
-    "etl/load_to_sqlite.py",
-    "analytics/performance_analysis.py",
-    "analytics/advanced_analytics.py"
+    "data_ingestion.py",
+    "clean_nav_history.py",
+    "clean_transactions.py",
+    "clean_performance.py",
+    "clean_remaining_datasets.py",
+    "load_sqlite.py"
 ]
 
 for script in scripts:
     print(f"\nRunning: {script}")
-    subprocess.run(["python", script], check=True)
 
-print("\nProject execution completed successfully!")
+    result = subprocess.run(
+        ["python", script],
+        capture_output=True,
+        text=True
+    )
+
+    print(result.stdout)
+
+    if result.returncode != 0:
+        print(f"\nERROR in {script}")
+        print(result.stderr)
+        break
+
+print("\nPipeline execution completed.")
